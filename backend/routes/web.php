@@ -20,5 +20,7 @@ Route::get('/', function () {
 Route::group(['prefix' => '/task'], function () {
     Route::get('/', 'Front\Task\TaskController@index')->name('task.index');
     Route::post('/', 'Front\Task\TaskController@create')->name('task.create');
+    Route::get('/{id}', 'Front\Task\TaskController@show')->name('task.show');
+    Route::post('/{id}', 'Front\Task\TaskController@edit')->name('task.edit');
     Route::post('/delete/{id}', 'Front\Task\TaskController@delete')->name('task.delete');
 });

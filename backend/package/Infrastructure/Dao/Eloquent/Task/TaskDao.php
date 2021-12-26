@@ -25,6 +25,11 @@ class TaskDao
     return $task;
   }
 
+  public function findById(int $id)
+  {
+    return EloquentTask::find($id);
+  }
+
   public function deleteById(int $id)
   {
     $task = EloquentTask::find($id);

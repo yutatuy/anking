@@ -23,7 +23,11 @@
                 @foreach ($tasks as $item)
                     <li class="flex items-center jusify-center mt-2">
                         <div class="mr-2">ID: {{$item->id}} </div>
-                        <div>{{$item->name}}</div>
+                        <div>
+                            <a class="text-blue-400" href="{{ route('task.show', ['id' => $item->id])}}">
+                                {{$item->name}}
+                            </a>
+                        </div>
                         <form method="POST" action="{{ route('task.delete', ['id' => $item->id])}}">
                             @csrf
                             <button class="ml-3 bg-red-400 rounded">削除</button>
