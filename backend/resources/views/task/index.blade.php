@@ -22,8 +22,12 @@
             <ul class="mt-3">
                 @foreach ($tasks as $item)
                     <li class="flex items-center jusify-center mt-2">
+                        <div class="mr-2">ID: {{$item->id}} </div>
                         <div>{{$item->name}}</div>
-                        <button class="ml-3 bg-red-400 rounded">削除</button>
+                        <form method="POST" action="{{ route('task.delete', ['id' => $item->id])}}">
+                            @csrf
+                            <button class="ml-3 bg-red-400 rounded">削除</button>
+                        </form>
                     </li>
                 @endforeach
             </ul>

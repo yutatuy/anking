@@ -24,4 +24,11 @@ class TaskDao
 
     return $task;
   }
+
+  public function deleteById(int $id)
+  {
+    $task = EloquentTask::find($id);
+    // 既に削除されていたらエラーハンドリングどうする？
+    $task->delete();
+  }
 }

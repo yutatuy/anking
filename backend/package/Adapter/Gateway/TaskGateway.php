@@ -19,10 +19,10 @@ class TaskGateway implements TaskRepository
     $this->task_dao = $task_dao;
   }
 
-  public function getAll() // Task型配列を定義
+  public function getAll() // TODO: 戻り値にははTask型配列を定義
   {
     $eloquent_tasks = $this->task_dao->getAll();
-    return $eloquent_tasks;
+    return $eloquent_tasks; // TODO: クラスの配列をEloquentTaskからTaskに変数処理を記述する
     // return $this->createFromEloquent($eloquent_tasks);
   }
 
@@ -30,6 +30,11 @@ class TaskGateway implements TaskRepository
   {
     $eloquent_task = $this->task_dao->create($task->name()->value(), $task->userId()->value());
     return $this->createFromEloquent($eloquent_task);
+  }
+
+  public function deleteById(TaskId $id)
+  {
+    $eloquent_task = $this->task_dao->deleteById($id->value());
   }
 
   private function createFromEloquent(EloquentTask $eloquent_task): Task
