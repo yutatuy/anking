@@ -25,6 +25,13 @@ class TaskDao
     return $task;
   }
 
+  public function update(int $id, string $name): EloquentTask
+  {
+    $task = $this->findById($id);
+    $task->update(['name' => $name]);
+    return $task;
+  }
+
   public function findById(int $id)
   {
     return EloquentTask::find($id);

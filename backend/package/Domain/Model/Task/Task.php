@@ -10,7 +10,7 @@ class Task
 
   private function __construct() { }
 
-  public static function create(TaskName $name, TaskUserId $user_id)
+  public static function create(TaskName $name, TaskUserId $user_id): Task
   {
     $task = new Task();
     $task->name = $name;
@@ -19,7 +19,7 @@ class Task
     return $task;
   }
 
-  public static function reconstruct(TaskId $id, TaskName $name, TaskUserId $user_id)
+  public static function reconstruct(TaskId $id, TaskName $name, TaskUserId $user_id): Task
   {
     $task = new Task();
     $task->id = $id;
@@ -27,6 +27,14 @@ class Task
     $task->user_id = $user_id;
 
     return $task;
+  }
+
+  public static function update(Task $task, TaskName $name): Task
+  {
+    $updated_task = $task;
+    $updated_task->name = $name;
+
+    return $updated_task;
   }
 
   public function id()

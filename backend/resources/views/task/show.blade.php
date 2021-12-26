@@ -17,6 +17,7 @@
                 <button type="submit" class="bg-gray-400 rounded">編集する</button>
             </form>    
         </div>
+        <a class="text-blue-400" href="{{ route('task.index') }}">戻る</a>
     </div>
 </body>
 </html>

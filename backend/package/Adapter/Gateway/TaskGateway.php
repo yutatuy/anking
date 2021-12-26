@@ -32,6 +32,12 @@ class TaskGateway implements TaskRepository
     return $this->createFromEloquent($eloquent_task);
   }
 
+  public function update(Task $task): Task
+  {
+    $eloquent_task = $this->task_dao->update($task->id()->value(), $task->name()->value(), $task->userId()->value());
+    return $this->createFromEloquent($eloquent_task);
+  }
+
   public function findById(TaskId $id): ?Task
   {
     $eloquent_task = $this->task_dao->findById($id->value());
