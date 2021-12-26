@@ -3,19 +3,26 @@
 namespace App\Http\Controllers\Front\Task;
 
 use App\Http\Controllers\Controller;
-use Package\Adapter\Converter\User\UserCreateRequestConverter;
-use Package\Application\User\Create\UserCreateUsecase;
+use App\Models\EloquentTask;
+use Package\Application\Task\Index\GetTasksUsecase;
+use Package\Application\Task\Create\TaskCreateUsecase;
+use Package\Adapter\Presenter\Task\GetTasksPresenter;
+use Package\Adapter\Converter\Task\TaskCreateRequestConverter;
 
 class TaskController extends Controller
 {
-  public function create(UserCreateRequestConverter $input, UserCreateUsecase $usecase)
-  {
-    $output = $usecase->exec($input);
+
+
+  public function index(GetTasksUsecase $usecase, GetTasksPresenter $presenter) {
+    $tasks = $usecase->exec();
+    return view('task.index', compact('tasks'));
+    // $presenter->exec($output);
   }
 
-  public function index() {
-    
-    return view('task.index');
+  public function create(TaskCreateRequestConverter $input, TaskCreateUsecase $usecase)
+  {
+    $usecase->exec($input);
+    return redirect()->route('task.index');
   }
 
 }

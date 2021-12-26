@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Package\Adapter\Gateway\TaskGateway;
+use Package\Domain\Model\Task\TaskRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      *
@@ -13,7 +16,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            \Package\Domain\Model\Task\TaskRepository::class,
+            \Package\Adapter\Gateway\TaskGateway::class,
+        );
     }
 
     /**

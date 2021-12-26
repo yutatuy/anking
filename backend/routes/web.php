@@ -18,5 +18,6 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => '/task'], function () {
-    Route::get('/', 'Front\Task\TaskController@index')->name('Task.index');
+    Route::get('/', 'Front\Task\TaskController@index')->name('task.index');
+    Route::post('/', 'Front\Task\TaskController@create')->name('task.create');
 });
