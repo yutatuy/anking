@@ -4,9 +4,9 @@ namespace Package\Adapter\Presenter\Task;
 
 // namespace Package\Adapter\Presenter\ShopViewModel;
 
-class GetTasksPresenter {
+class TasksGetPresenter {
 
-  // public function exec(GetTasksOutput $output) 
+  // public function exec(TasksGetOutput $output) 
   public function exec($output) 
   {
     //

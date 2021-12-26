@@ -3,7 +3,7 @@
 namespace Package\Application\Task\Index;
 use Package\Domain\Model\Task\TaskRepository;
 
-class GetTasksUsecase {
+class TasksGetUsecase {
 
   private TaskRepository $task_repository;
 
@@ -18,7 +18,7 @@ class GetTasksUsecase {
     $tasks = $this->task_repository->getAll();
 
     // データを返却する
-    // return new GetTasksUsecaseOutput($tasks); //TODO GetTasksUsecaseOutputを作成する
+    // return new TasksGetUsecaseOutput($tasks); //TODO TasksGetUsecaseOutputを作成する
     return $tasks;
   }
 }
