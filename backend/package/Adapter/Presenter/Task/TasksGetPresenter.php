@@ -1,15 +1,16 @@
 <?php
 
 namespace Package\Adapter\Presenter\Task;
-
-// namespace Package\Adapter\Presenter\ShopViewModel;
+use Package\Adapter\ViewModel\Task\TaskViewModel;
 
 class TasksGetPresenter {
 
-  // public function exec(TasksGetOutput $output) 
   public function exec($output) 
   {
-    //
-    dd('Presenter', $output);
+    $task_list = [];
+    foreach ($output as $task) {
+      $task_list[] = new TaskViewModel($task);
+    }
+    return view('task.index', compact('task_list'));
   }
 }

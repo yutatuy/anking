@@ -11,9 +11,9 @@
     <div class="max-w-7xl p-10">
         <div>
             <h2>タスク編集</h2>
-            <form method="POST" action="{{ route('task.edit', ['id' => $task->id()->value()]) }}" class="mt-2">
+            <form method="POST" action="{{ route('task.update', ['id' => $task->getId()]) }}" class="mt-2">
                 @csrf
-                <input type="text" name="name" value="{{$task->name()->value()}}" class="p-1 border border-1 border-black">
+                <input type="text" name="name" value="{{$task->getName()}}" class="p-1 border border-1 border-black">
                 <button type="submit" class="bg-gray-400 rounded">編集する</button>
             </form>    
         </div>

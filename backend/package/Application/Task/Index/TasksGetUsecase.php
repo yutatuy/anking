@@ -15,10 +15,9 @@ class TasksGetUsecase {
   public function exec()
   {
     // リポジトリを呼び出してデータを取得
-    $tasks = $this->task_repository->getAll();
+    $tasks = $this->task_repository->fetchAll();
 
     // データを返却する
-    // return new TasksGetUsecaseOutput($tasks); //TODO TasksGetUsecaseOutputを作成する
     return $tasks;
   }
 }

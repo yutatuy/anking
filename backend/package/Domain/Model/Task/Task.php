@@ -29,25 +29,22 @@ class Task
     return $task;
   }
 
-  public static function update(Task $task, TaskName $name): Task
+  public function changeName(TaskName $name): void
   {
-    $updated_task = $task;
-    $updated_task->name = $name;
-
-    return $updated_task;
+    $this->name = $name;
   }
 
-  public function id()
+  public function id(): TaskId
   {
     return $this->id;
   }
 
-  public function name()
+  public function name(): TaskName
   {
     return $this->name;
   }
 
-  public function userId()
+  public function userId(): TaskUserId
   {
     return $this->user_id;
   }

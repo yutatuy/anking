@@ -20,15 +20,15 @@
         <div class="mt-10">
             <h2>タスク一覧</h2>
             <ul class="mt-3">
-                @foreach ($tasks as $item)
+                @foreach ($task_list as $task)
                     <li class="flex items-center jusify-center mt-2">
-                        <div class="mr-2">ID: {{$item->id}} </div>
+                        <div class="mr-2">ID: {{$task->getId()}} </div>
                         <div>
-                            <a class="text-blue-400" href="{{ route('task.show', ['id' => $item->id])}}">
-                                {{$item->name}}
+                            <a class="text-blue-400" href="{{ route('task.show', ['id' => $task->getId()])}}">
+                                {{$task->getName()}}
                             </a>
                         </div>
-                        <form method="POST" action="{{ route('task.delete', ['id' => $item->id])}}">
+                        <form method="POST" action="{{ route('task.delete', ['id' => $task->getId()])}}">
                             @csrf
                             <button class="ml-3 bg-red-400 rounded">削除</button>
                         </form>

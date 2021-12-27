@@ -19,11 +19,14 @@ class TaskGateway implements TaskRepository
     $this->task_dao = $task_dao;
   }
 
-  public function getAll() // TODO: 戻り値にははTask型配列を定義
+  public function fetchAll(): array
   {
-    $eloquent_tasks = $this->task_dao->getAll();
-    return $eloquent_tasks; // TODO: クラスの配列をEloquentTaskからTaskに変数処理を記述する
-    // return $this->createFromEloquent($eloquent_tasks);
+    $eloquent_tasks = $this->task_dao->fetchAll();
+    $task_list = [];
+    foreach ($eloquent_tasks as $eloquent_task) {
+      $task_list[] = $this->createFromEloquent($eloquent_task);
+    }
+    return $task_list;
   }
 
   public function create(Task $task): Task
@@ -34,7 +37,9 @@ class TaskGateway implements TaskRepository
 
   public function update(Task $task): Task
   {
-    $eloquent_task = $this->task_dao->update($task->id()->value(), $task->name()->value(), $task->userId()->value());
+    $eloquent_task = $this->task_dao->findById($task->id()->value());
+    $eloquent_task->name = $task->name()->value();
+    $this->task_dao->update($eloquent_task);
     return $this->createFromEloquent($eloquent_task);
   }
 

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskDao
 {
-  public function getAll() //TODO Eloquentの配列を戻り値の型として定義する
+  public function fetchAll() //TODO Eloquentの配列を戻り値の型として定義する
   {
     $tasks = EloquentTask::all(); 
     return $tasks;
@@ -25,11 +25,9 @@ class TaskDao
     return $task;
   }
 
-  public function update(int $id, string $name): EloquentTask
+  public function update(EloquentTask $task)
   {
-    $task = $this->findById($id);
-    $task->update(['name' => $name]);
-    return $task;
+    $task->save();
   }
 
   public function findById(int $id)

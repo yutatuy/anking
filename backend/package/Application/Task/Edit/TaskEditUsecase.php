@@ -23,12 +23,12 @@ class TaskEditUsecase
         // タスク取得
         $task = $this->task_repository->findById($input->getTaskId());
         
-        // タスクの変更 (nameを変更)
-        $task = Task::update($task, $input->getTaskName());
+        // nameを変更
+        $task->changeName($input->getTaskName());
 
         // タスクの更新
-        $updated_task = $this->task_repository->update($task);
+        $changed_task = $this->task_repository->update($task);
 
-        return new TaskEditUsecaseOutput($updated_task);
+        return new TaskEditUsecaseOutput($changed_task);
     }
 }
