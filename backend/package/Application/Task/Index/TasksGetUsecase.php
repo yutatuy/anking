@@ -14,6 +14,7 @@ class TasksGetUsecase {
   
   public function exec()
   {
+    throw new \Exception('認証に失敗しました。');
     // リポジトリを呼び出してデータを取得
     $tasks = $this->task_repository->fetchAll();
 
