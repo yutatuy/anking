@@ -5,7 +5,7 @@ namespace Package\Adapter\ViewModel\Task;
 use Package\Adapter\ViewModel\JsonViewModel;
 use Package\Domain\Model\Task\Task;
 
-class TaskViewModel
+class TaskViewModel implements JsonViewModel
 {
   private Task $task;
 
@@ -30,5 +30,14 @@ class TaskViewModel
   public function getUserId(): string
   {
     return $this->task->userId()->value();
+  }
+
+  public function toArray(): array
+  {
+    return [
+      'id' => $this->getId(),
+      'name' => $this->getName(),
+      'user_id' => $this->getUserId()
+    ];
   }
 }
