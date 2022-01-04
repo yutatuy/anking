@@ -20,22 +20,26 @@ class WordbookDao {
                 'user_id' => $user_id,
             ]
         )->first();
-        // return EloquentWordbook::find($id);
     }
 
     public function create(string $title, int $user_id, bool $is_public)
     {
         EloquentWordbook::create(
-        [
-            'title' => $title,
-            'user_id' => $user_id,
-            'is_public' => $is_public,
-        ]
+            [
+                'title' => $title,
+                'user_id' => $user_id,
+                'is_public' => $is_public,
+            ]
         );
     }
 
     public function save(EloquentWordbook $wordbook)
     {
         $wordbook->save();
+    }
+
+    public function delete(EloquentWordbook $wordbook)
+    {
+        $wordbook->delete();
     }
 }

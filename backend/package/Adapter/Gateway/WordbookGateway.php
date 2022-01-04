@@ -57,6 +57,13 @@ class WordbookGateway implements WordbookRepository {
         $this->wordbook_dao->save($eloquent_wordbook);
     }
 
+    public function delete(Wordbook $wordbook)
+    {
+        $id = $wordbook->id()->value();
+        $eloquent_wordbook = $this->wordbook_dao->findById($id);
+        $this->wordbook_dao->delete($eloquent_wordbook);
+    }
+
     public function createFromEloquent(EloquentWordbook $eloquent_wordbook)
     {
         return Wordbook::reconstruct(

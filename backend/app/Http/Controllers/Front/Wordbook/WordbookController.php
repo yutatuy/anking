@@ -15,6 +15,9 @@ use Package\Adapter\Presenter\Wordbook\WordbookFetchPresenter;
 use Package\Adapter\Converter\Wordbook\WordbookUpdateRequestConverter;
 use Package\Application\Wordbook\Update\WordbookUpdateUsecase;
 use Package\Adapter\Presenter\Wordbook\WordbookUpdatePresenter;
+use Package\Adapter\Converter\Wordbook\WordbookDeleteRequestConverter;
+use Package\Application\Wordbook\Delete\WordbookDeleteUsecase;
+use Package\Adapter\Presenter\Wordbook\WordbookDeletePresenter;
 
 class WordbookController extends Controller
 {
@@ -45,6 +48,14 @@ class WordbookController extends Controller
     public function update(
         WordbookUpdateRequestConverter $input,
         WordbookUpdateUsecase $usecase
+    )
+    {
+        $usecase->exec($input);
+    }
+
+    public function delete(
+        WordbookDeleteRequestConverter $input,
+        WordbookDeleteUsecase $usecase
     )
     {
         $usecase->exec($input);

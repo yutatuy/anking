@@ -7,7 +7,6 @@ use Package\Domain\Model\Wordbook\WordbookIsPublic;
 use Package\Domain\Model\Wordbook\WordbookId;
 use App\Http\Requests\WordbookUpdateRequest;
 use Package\Application\Wordbook\Update\WordbookUpdateInput;
-use Illuminate\Support\Facades\Auth;
 
 class WordbookUpdateRequestConverter implements WordbookUpdateInput {
     private $request;

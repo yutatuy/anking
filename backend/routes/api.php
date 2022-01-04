@@ -42,5 +42,6 @@ Route::group([
     Route::get('fetchAll', 'Front\Wordbook\WordbookController@fetchAll');
     Route::post('create', 'Front\Wordbook\WordbookController@create');
     Route::post('update', 'Front\Wordbook\WordbookController@update');
+    Route::post('delete', 'Front\Wordbook\WordbookController@delete');
     Route::get('fetch', 'Front\Wordbook\WordbookController@fetch');
 });
