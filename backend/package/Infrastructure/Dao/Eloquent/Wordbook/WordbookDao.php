@@ -11,6 +11,11 @@ class WordbookDao {
         return EloquentWordbook::where('user_id', $user_id)->get();
     }
 
+    public function findById(int $id): EloquentWordbook
+    {
+        return EloquentWordbook::find($id);
+    }
+
     public function create(string $title, int $user_id, bool $is_public)
     {
         EloquentWordbook::create(

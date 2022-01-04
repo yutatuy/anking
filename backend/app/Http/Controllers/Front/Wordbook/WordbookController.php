@@ -9,7 +9,9 @@ use Package\Application\Wordbook\Create\WordbookCreateUsecase;
 use Package\Adapter\Converter\Wordbook\WordbookFetchAllRequestConverter;
 use Package\Application\Wordbook\FetchAll\WordbookFetchAllUsecase;
 use Package\Adapter\Presenter\Wordbook\WordbookFetchAllPresenter;
-
+use Package\Adapter\Converter\Wordbook\WordbookFetchRequestConverter;
+use Package\Application\Wordbook\Fetch\WordbookFetchUsecase;
+use Package\Adapter\Presenter\Wordbook\WordbookFetchPresenter;
 
 class WordbookController extends Controller
 {
@@ -26,5 +28,11 @@ class WordbookController extends Controller
     public function create(WordbookCreateRequestConverter $input, WordbookCreateUsecase $usecase)
     {
         $usecase->exec($input);
+    }
+
+    public function fetch(WordbookFetchRequestConverter $input, WordbookFetchUsecase $usecase, WordbookFetchPresenter $presenter)
+    {
+        $output = $usecase->exec($input);
+        return $presenter->exec($output);
     }
 }

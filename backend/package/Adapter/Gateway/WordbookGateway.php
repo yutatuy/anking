@@ -30,6 +30,12 @@ class WordbookGateway implements WordbookRepository {
         return $wordbook_list;
     }
 
+    public function findById(WordbookId $id): Wordbook
+    {
+        $eloquent_wordbook = $this->wordbook_dao->findById($id->value());
+        return $this->createFromEloquent($eloquent_wordbook);
+    }
+
     public function create(Wordbook $wordbook)
     {
         $title = $wordbook->title()->value();
