@@ -6,6 +6,7 @@ use Package\Domain\Model\User\UserId;
 
 interface WordbookRepository {
   public function create(Wordbook $wordbook);
+  public function update(Wordbook $wordbook);
   public function fetchAll(UserId $user_id): array;
   public function findById(WordbookId $id): ?Wordbook;
 }

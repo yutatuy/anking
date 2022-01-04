@@ -49,4 +49,14 @@ class Wordbook {
         return $this->is_public;
     }
 
+    public function changeTitle(WordbookTitle $title)
+    {
+        $this->title = $title;
+    }
+
+    public function changeIsPublic(WordbookIspublic $is_public)
+    {
+        $this->is_public = $is_public;
+    }
+
 }

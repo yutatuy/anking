@@ -30,9 +30,10 @@ class WordbookGateway implements WordbookRepository {
         return $wordbook_list;
     }
 
-    public function findById(WordbookId $id): Wordbook
+    public function findById(WordbookId $id): ?Wordbook
     {
         $eloquent_wordbook = $this->wordbook_dao->findById($id->value());
+        if(is_null($eloquent_wordbook)) return null;
         return $this->createFromEloquent($eloquent_wordbook);
     }
 
@@ -43,6 +44,17 @@ class WordbookGateway implements WordbookRepository {
         $is_public = $wordbook->isPublic()->value();
 
         $this->wordbook_dao->create($title, $user_id, $is_public);
+    }
+
+    public function update(Wordbook $wordbook)
+    {
+        $id = $wordbook->id()->value();
+
+        $eloquent_wordbook = $this->wordbook_dao->findById($id);
+        $eloquent_wordbook->title = $wordbook->title()->value();
+        $eloquent_wordbook->is_public = $wordbook->isPublic()->value();
+
+        $this->wordbook_dao->save($eloquent_wordbook);
     }
 
     public function createFromEloquent(EloquentWordbook $eloquent_wordbook)

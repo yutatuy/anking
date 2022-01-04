@@ -12,9 +12,18 @@ use Package\Adapter\Presenter\Wordbook\WordbookFetchAllPresenter;
 use Package\Adapter\Converter\Wordbook\WordbookFetchRequestConverter;
 use Package\Application\Wordbook\Fetch\WordbookFetchUsecase;
 use Package\Adapter\Presenter\Wordbook\WordbookFetchPresenter;
+use Package\Adapter\Converter\Wordbook\WordbookUpdateRequestConverter;
+use Package\Application\Wordbook\Update\WordbookUpdateUsecase;
+use Package\Adapter\Presenter\Wordbook\WordbookUpdatePresenter;
 
 class WordbookController extends Controller
 {
+    public function fetch(WordbookFetchRequestConverter $input, WordbookFetchUsecase $usecase, WordbookFetchPresenter $presenter)
+    {
+        $output = $usecase->exec($input);
+        return $presenter->exec($output);
+    }
+
     public function fetchAll(
         WordbookFetchAllRequestConverter $input,
         WordbookFetchAllUsecase $usecase,
@@ -25,14 +34,19 @@ class WordbookController extends Controller
         return $presenter->exec($output);
     }
 
-    public function create(WordbookCreateRequestConverter $input, WordbookCreateUsecase $usecase)
+    public function create(
+        WordbookCreateRequestConverter $input,
+        WordbookCreateUsecase $usecase
+    )
     {
         $usecase->exec($input);
     }
 
-    public function fetch(WordbookFetchRequestConverter $input, WordbookFetchUsecase $usecase, WordbookFetchPresenter $presenter)
+    public function update(
+        WordbookUpdateRequestConverter $input,
+        WordbookUpdateUsecase $usecase
+    )
     {
-        $output = $usecase->exec($input);
-        return $presenter->exec($output);
+        $usecase->exec($input);
     }
 }

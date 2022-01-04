@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WordbookCreateRequest extends FormRequest
+class WordbookUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,6 +25,7 @@ class WordbookCreateRequest extends FormRequest
     {
         return [
             'title' => 'required|max:100',
+            'is_public' => 'required',
         ];
     }
 }
