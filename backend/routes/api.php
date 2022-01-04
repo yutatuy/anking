@@ -38,8 +38,8 @@ Route::group([
     'prefix' => 'wordbook',
     'middleware' => 'auth:api'
 ], function () {
+    Route::get('fetchAll', 'Front\Wordbook\WordbookController@fetchAll');
     Route::post('create', 'Front\Wordbook\WordbookController@create');
     Route::post('update', 'Front\Wordbook\WordbookController@update');
     Route::get('fetch', 'Front\Wordbook\WordbookController@fetch');
 });
-// Route::post('wordbook/create', 'Front\Wordbook\WordbookController@create');

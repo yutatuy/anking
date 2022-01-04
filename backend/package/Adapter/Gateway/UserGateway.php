@@ -29,6 +29,12 @@ class UserGateway implements UserRepository{
         return $this->createFromEloquent($eloquent_user);
     }
 
+    public function findByAuth(): User
+    {
+        $eloquent_user = $this->user_dao->findByAuth();
+        return $this->createFromEloquent($eloquent_user);
+    }
+
     public function findByEmail(UserEmail $email): ?User
     {
         $eloquent_user = $this->user_dao->findByEmail($email->value());
