@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Package\Adapter\Gateway\TaskGateway;
-use Package\Domain\Model\Task\TaskRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             \Package\Domain\Model\User\UserRepository::class,
             \Package\Adapter\Gateway\UserGateway::class,
+        );
+
+        $this->app->bind(
+            \Package\Domain\Model\Wordbook\WordbookRepository::class,
+            \Package\Adapter\Gateway\WordbookGateway::class,
         );
     }
 
