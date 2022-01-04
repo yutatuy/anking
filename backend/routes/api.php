@@ -22,6 +22,7 @@ Route::group([
     'prefix' => 'auth'
 ], function () {
     Route::post('login', 'Front\User\UserController@login');
+    Route::post('create', 'Front\User\UserController@create');
 });
 
 Route::group([

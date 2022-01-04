@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Front\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Package\Adapter\Converter\User\UserLoginRequestConverter;
+use Package\Adapter\Converter\User\UserCreateRequestConverter;
 use Package\Application\User\Login\UserLoginUsecase;
+use Package\Application\User\Create\UserCreateUsecase;
 use Package\Adapter\Presenter\User\UserLoginPresenter;
-
+use Package\Adapter\Presenter\User\UserCreateJsonPresenter;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -18,7 +21,13 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'create']]);
+    }
+
+    public function create(UserCreateRequestConverter $input, UserCreateUsecase $usecase, UserCreateJsonPresenter $presenter)
+    {
+        $output = $usecase->exec($input);
+        return $presenter->exec($output);
     }
 
     public function login(UserLoginRequestConverter $input, UserLoginUsecase $usecase, UserLoginPresenter $presenter)

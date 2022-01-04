@@ -20,6 +20,11 @@ class AppServiceProvider extends ServiceProvider
             \Package\Domain\Model\Task\TaskRepository::class,
             \Package\Adapter\Gateway\TaskGateway::class,
         );
+
+        $this->app->bind(
+            \Package\Domain\Model\User\UserRepository::class,
+            \Package\Adapter\Gateway\UserGateway::class,
+        );
     }
 
     /**
