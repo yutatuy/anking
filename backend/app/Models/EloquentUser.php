@@ -2,15 +2,22 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\EloquentWordbook;
 
 class EloquentUser extends Model
 {
     protected $table = 'users';
     protected $fillable = [
-      'name',
-      'email',
-      'password',
-  ];
+        'name',
+        'email',
+        'password',
+    ];
+
+    public function wordbooks(): HasMany
+    {
+        return $this->hasMany(EloquentWordbook::class);
+    }
 
     public function getJWTIdentifier()
     {

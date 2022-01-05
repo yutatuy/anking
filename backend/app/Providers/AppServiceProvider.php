@@ -28,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
             \Package\Domain\Model\Wordbook\WordbookRepository::class,
             \Package\Adapter\Gateway\WordbookGateway::class,
         );
+
+        $this->app->bind(
+            \Package\Domain\Model\Word\WordRepository::class,
+            \Package\Adapter\Gateway\WordGateway::class,
+        );
     }
 
     /**

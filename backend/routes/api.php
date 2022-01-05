@@ -43,5 +43,14 @@ Route::group([
     Route::post('create', 'Front\Wordbook\WordbookController@create');
     Route::post('update', 'Front\Wordbook\WordbookController@update');
     Route::post('delete', 'Front\Wordbook\WordbookController@delete');
-    Route::get('fetch', 'Front\Wordbook\WordbookController@fetch');
+});
+
+Route::group([
+    'prefix' => 'word',
+    'middleware' => 'auth:api'
+], function () {
+    Route::post('create', 'Front\Word\WordController@create');
+    Route::get('fetch', 'Front\Word\WordController@fetch');
+    Route::post('update', 'Front\Word\WordController@update');
+    Route::post('delete', 'Front\Word\WordController@delete');
 });
