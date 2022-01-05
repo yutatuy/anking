@@ -6,7 +6,12 @@ use App\Models\EloquentWordbook;
 
 class WordbookDao {
 
-    public function fetchAll(int $user_id)
+    public function fetchAll()
+    {
+        return EloquentWordbook::get();
+    }
+
+    public function fetchMine(int $user_id)
     {
         return EloquentWordbook::where('user_id', $user_id)->get();
     }

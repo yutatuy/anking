@@ -26,6 +26,16 @@ class WordGateway implements WordRepository {
         return $this->createFromEloquent($eloquent_word);
     }
 
+    public function fetchByWordbookId(WordWordbookId $id): array
+    {
+        $eloquent_word_list = $this->word_dao->fetchByWordbookId($id->value());
+        $word_list = [];
+        foreach ($eloquent_word_list as $eloquent_word) {
+            $word_list[] = $this->createFromEloquent($eloquent_word);
+        }
+        return $word_list;
+    }
+
     public function create(Word $word)
     {
         $wordbook_id = $word->wordbookId()->value();

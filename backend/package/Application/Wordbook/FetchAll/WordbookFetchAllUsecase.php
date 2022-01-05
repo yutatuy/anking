@@ -19,13 +19,10 @@ class WordbookFetchAllUsecase {
 
     public function exec(WordbookFetchAllInput $input): WordbookFetchAllOutput
     {
-        // ユーザを取得
-        $user = $this->user_repository->findByAuth();
-
         // 取得
-        $wordbook_list = $this->wordbook_repository->fetchAll($user->id());
+        $wordbook_list = $this->wordbook_repository->fetchAll();
 
-        // // 保存
+        // 出力
         return new WordbookFetchAllUsecaseOutput($wordbook_list);
     }
 }

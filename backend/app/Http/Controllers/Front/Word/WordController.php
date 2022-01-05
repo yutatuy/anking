@@ -18,6 +18,9 @@ use Package\Adapter\Presenter\Word\WordUpdatePresenter;
 use Package\Adapter\Converter\Word\WordDeleteRequestConverter;
 use Package\Application\Word\Delete\WordDeleteUsecase;
 use Package\Adapter\Presenter\Word\WordDeletePresenter;
+use Package\Adapter\Converter\Word\WordFetchByWordbookIdRequestConverter;
+use Package\Application\Word\FetchByWordbookId\WordFetchByWordbookIdUsecase;
+use Package\Adapter\Presenter\Word\WordFetchByWordbookIdPresenter;
 
 class WordController extends Controller
 {
@@ -49,5 +52,15 @@ class WordController extends Controller
     )
     {
         $usecase->exec($input);
+    }
+
+    public function fetchByWordbookId(
+        WordFetchByWordbookIdRequestConverter $input,
+        WordFetchByWordbookIdUsecase $usecase,
+        WordFetchByWordbookIdPresenter $presenter
+    )
+    {
+        $output = $usecase->exec($input);
+        return $presenter->exec($output);
     }
 }

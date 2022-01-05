@@ -24,6 +24,6 @@ class EloquentWordbook extends Model
 
     public function words(): HasMany
     {
-        return $this->hasMany(EloquentWord::class);
+        return $this->hasMany(EloquentWord::class, 'wordbook_id');
     }
 }

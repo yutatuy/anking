@@ -8,6 +8,6 @@ interface WordbookRepository {
   public function create(Wordbook $wordbook);
   public function update(Wordbook $wordbook);
   public function delete(Wordbook $wordbook);
-  public function fetchAll(UserId $user_id): array;
+  public function fetchAll(): array;
   public function findById(WordbookId $id): ?Wordbook;
 }

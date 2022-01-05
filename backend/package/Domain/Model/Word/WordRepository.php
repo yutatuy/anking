@@ -9,4 +9,5 @@ interface WordRepository {
   public function update(Word $wordbook);
   public function delete(Word $wordbook);
   public function findById(WordId $id): ?Word;
+  public function fetchByWordbookId(WordWordbookId $wordbook_id): array;
 }

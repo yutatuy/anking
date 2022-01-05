@@ -23,6 +23,12 @@ class WordDao {
         return $word;
     }
 
+    public function fetchByWordbookId(int $wordbook_id)
+    {
+        $words = EloquentWord::where('wordbook_id', $wordbook_id)->get();
+        return $words;
+    }
+
     public function create(int $wordbook_id, string $front_content, string $back_content)
     {
         EloquentWord::create(

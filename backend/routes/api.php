@@ -50,6 +50,7 @@ Route::group([
     'middleware' => 'auth:api'
 ], function () {
     Route::post('create', 'Front\Word\WordController@create');
+    Route::get('fetchByWordbookId', 'Front\Word\WordController@fetchByWordbookId');
     Route::get('fetch', 'Front\Word\WordController@fetch');
     Route::post('update', 'Front\Word\WordController@update');
     Route::post('delete', 'Front\Word\WordController@delete');
