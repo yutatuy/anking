@@ -9,6 +9,7 @@ use Package\Domain\Model\User\UserId;
 use Package\Domain\Model\User\UserName;
 use Package\Domain\Model\User\UserEmail;
 use Package\Domain\Model\User\UserPassword;
+use Package\Domain\Model\UserPlay\UserPlay;
 use Package\Infrastructure\Dao\Eloquent\User\UserDao;
 
 class UserGateway implements UserRepository{
@@ -40,6 +41,11 @@ class UserGateway implements UserRepository{
         $eloquent_user = $this->user_dao->findByEmail($email->value());
         if (is_null($eloquent_user)) return null;
         return $this->createFromEloquent($eloquent_user);
+    }
+
+    public function createUserPlay(UserPlay $user_play)
+    {
+        $this->user_dao->createUserPlay($user_play->userId()->value(), $user_play->count()->value());
     }
 
     private function createFromEloquent(EloquentUser $eloquent_user): User

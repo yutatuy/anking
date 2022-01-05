@@ -55,3 +55,11 @@ Route::group([
     Route::post('update', 'Front\Word\WordController@update');
     Route::post('delete', 'Front\Word\WordController@delete');
 });
+
+Route::group([
+    'prefix' => 'userPlay',
+    'middleware' => 'auth:api'
+], function () {
+    Route::post('create', 'Front\UserPlay\UserPlayController@create');
+});
+
