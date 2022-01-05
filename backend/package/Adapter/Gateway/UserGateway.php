@@ -36,6 +36,17 @@ class UserGateway implements UserRepository{
         return $this->createFromEloquent($eloquent_user);
     }
 
+    public function sordByPlayCount(): array
+    {
+        $eloquent_user_list = $this->user_dao->sordByPlayCount();
+        $user_list = [];
+        foreach ($eloquent_user_list as $eloquent_user) {
+            $user_list[] = $this->createFromEloquent($eloquent_user);
+        }
+
+        return $user_list;
+    }
+
     public function findByEmail(UserEmail $email): ?User
     {
         $eloquent_user = $this->user_dao->findByEmail($email->value());

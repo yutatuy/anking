@@ -61,5 +61,6 @@ Route::group([
     'middleware' => 'auth:api'
 ], function () {
     Route::post('create', 'Front\UserPlay\UserPlayController@create');
+    Route::get('ranking', 'Front\UserPlay\UserPlayController@ranking');
 });
 

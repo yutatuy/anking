@@ -15,7 +15,12 @@ class EloquentUser extends Model
 
     public function wordbooks(): HasMany
     {
-        return $this->hasMany(EloquentWordbook::class);
+        return $this->hasMany(EloquentWordbook::class, 'user_id');
+    }
+
+    public function user_plays(): HasMany
+    {
+        return $this->hasMany(EloquentUserPlay::class, 'user_id');
     }
 
     public function getJWTIdentifier()

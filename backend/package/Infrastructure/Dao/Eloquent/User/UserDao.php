@@ -43,4 +43,17 @@ class UserDao {
             ]
         );
     }
+
+    public function sordByPlayCount()
+    {
+        $users = EloquentUser::with(
+            [
+                'user_plays' => function($query) {
+                    // TODO: user_playsでGroupByしてOrderBy Descする
+                }
+            ]
+        )->get();
+        
+        return $users;
+    }
 }
