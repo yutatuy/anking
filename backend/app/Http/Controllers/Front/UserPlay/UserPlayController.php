@@ -28,4 +28,5 @@ class UserPlayController extends Controller
     {
         $usecase->exec($input);
     }
+
 }

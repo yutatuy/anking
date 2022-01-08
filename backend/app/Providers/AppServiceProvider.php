@@ -33,6 +33,11 @@ class AppServiceProvider extends ServiceProvider
             \Package\Domain\Model\Word\WordRepository::class,
             \Package\Adapter\Gateway\WordGateway::class,
         );
+
+        $this->app->bind(
+            \Package\Domain\Model\Favorite\FavoriteRepository::class,
+            \Package\Adapter\Gateway\FavoriteGateway::class,
+        );
     }
 
     /**

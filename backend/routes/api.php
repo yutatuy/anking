@@ -64,3 +64,12 @@ Route::group([
     Route::get('ranking', 'Front\UserPlay\UserPlayController@ranking');
 });
 
+Route::group([
+    'prefix' => 'favorite',
+    'middleware' => 'auth:api'
+], function () {
+    Route::post('create', 'Front\Favorite\FavoriteController@create');
+    Route::post('delete', 'Front\Favorite\FavoriteController@delete');
+});
+
+
