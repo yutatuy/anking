@@ -22,7 +22,7 @@ class WordbookGateway implements WordbookRepository {
 
     public function fetchAll(): array
     {
-        $eloquent_wordbook_list = $this->wordbook_dao->fetchAll();
+        $eloquent_wordbook_list = $this->wordbook_dao->fetchMine();
         $wordbook_list = [];
         foreach ($eloquent_wordbook_list as $eloquent_wordbook) {
             $wordbook_list[] = $this->createFromEloquent($eloquent_wordbook);

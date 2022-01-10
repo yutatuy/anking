@@ -18,7 +18,6 @@ class WordFetchByWordbookIdPresenter extends JsonPresenter {
 
         return $this->jsonResponse(
             [
-                'status' => 'success',
                 'words' => $view_model_list,
             ]
         );

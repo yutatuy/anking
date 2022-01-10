@@ -1,16 +1,16 @@
 import { TextField } from "@material-ui/core"
-import LoadingButton from "@mui/lab/LoadingButton"
-import Cookies from "js-cookie"
+import { LoadingButton } from "@mui/lab"
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import { useState } from "react"
 import { Controller, useForm } from "react-hook-form"
-import { loginApi } from "../api/user"
+import { signupApi } from "../api/user"
 import { checkEmail, checkRequired } from "../common/validation"
 import { BaseLayout } from "../components/Layout/BaseLayout"
 import { ErrorText } from "../components/Text/ErrorText"
 
 export type FormData = {
+  name: string
   email: string
   password: string
 }
@@ -27,9 +27,9 @@ const App: NextPage = () => {
   const onSubmit = async (inputs: FormData) => {
     setIsSending(true)
     try {
-      const { data } = await loginApi(inputs)
-      Cookies.set("token", data.data.results.accessToken)
-      router.replace("/home")
+      console.log("inputs", inputs)
+      await signupApi(inputs)
+      router.replace("/login")
     } catch (e) {
       console.log("[Error]", e)
     }
@@ -39,8 +39,25 @@ const App: NextPage = () => {
   return (
     <BaseLayout>
       <div className="pt-24">
-        <h1 className="text-center font-bold text-2xl">ログイン</h1>
+        <h1 className="text-center font-bold text-2xl">新規登録</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-12">
+          <Controller
+            name="name"
+            control={control}
+            defaultValue=""
+            rules={{
+              validate: (value) => checkRequired(value),
+            }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="名前"
+                variant="outlined"
+                color="secondary"
+                className="bg-white w-full rounded"
+              />
+            )}
+          />
           <Controller
             name="email"
             control={control}
@@ -54,7 +71,7 @@ const App: NextPage = () => {
                 label="メールアドレス"
                 variant="outlined"
                 color="secondary"
-                className="bg-white w-full rounded"
+                className="mt-6 bg-white w-full rounded"
               />
             )}
           />
@@ -79,16 +96,17 @@ const App: NextPage = () => {
             )}
           />
           <ErrorText error={errors.password} />
-          <div className="flex justify-center">
-            <LoadingButton
-              className="mt-8 mr-auto ml-auto pl-6 pr-6 h-10"
-              loading={isSending}
-              variant="contained"
-              type="submit"
-            >
-              ログインする
-            </LoadingButton>
+          <div className="mt-5 text-sm">
+            ※半角大小英数字をそれぞれ1種類以上含む8文字以上100文字以下
           </div>
+          <LoadingButton
+            className="text-black mt-8 mr-auto ml-auto pl-6 pr-6 h-10 bg-primary1"
+            loading={isSending}
+            variant="contained"
+            onClick={handleSubmit(onSubmit)}
+          >
+            登録する
+          </LoadingButton>
         </form>
       </div>
     </BaseLayout>

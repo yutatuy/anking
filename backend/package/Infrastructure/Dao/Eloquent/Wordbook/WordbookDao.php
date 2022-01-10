@@ -11,8 +11,9 @@ class WordbookDao {
         return EloquentWordbook::get();
     }
 
-    public function fetchMine(int $user_id)
+    public function fetchMine()
     {
+        $user_id = Auth::id();
         return EloquentWordbook::where('user_id', $user_id)->get();
     }
 

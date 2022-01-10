@@ -13,7 +13,6 @@ export const api = axios.create({
 export const setAuthorization = () => {
   try {
     const token = Cookies.get("token")
-    console.log("token", token)
     // @ts-ignore
     api.defaults.headers.Authorization = `Bearer ${token}`
   } catch (e) {

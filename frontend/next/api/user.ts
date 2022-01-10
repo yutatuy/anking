@@ -1,6 +1,6 @@
 import { api } from "."
 
-export const login = (params: { email: string; password: string }) => {
+export const loginApi = (params: { email: string; password: string }) => {
   return api.post<{
     data: {
       status: string
@@ -13,13 +13,10 @@ export const login = (params: { email: string; password: string }) => {
   }>("/auth/login", params)
 }
 
-export const getCurrentUser = () => {
-  return api.get<{
-    id: number
-    name: string
-    email: string
-    email_verified_at: null
-    created_at: null
-    updated_at: null
-  }>("/auth/me")
+export const signupApi = (params: { name: string; email: string; password: string }) => {
+  return api.post<[]>("/auth/create", params)
+}
+
+export const createUserPlayApi = (params: { count: number }) => {
+  return api.post<[]>("/userPlay/create", params)
 }

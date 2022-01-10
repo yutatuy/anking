@@ -18,7 +18,6 @@ class WordbookFetchAllPresenter extends JsonPresenter {
 
         return $this->jsonResponse(
             [
-                'status' => 'success',
                 'wordbooks' => $view_model_list,
             ]
         );

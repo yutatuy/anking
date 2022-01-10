@@ -22,6 +22,10 @@ class WordbookFetchUsecase {
         // wordbookを取得
         $wordbook = $this->wordbook_repository->findById($input->getId());
 
+        if(is_null($wordbook)) {
+            throw new \Exception('このリストは存在しません。');
+        };
+
         // 保存
         return new WordbookFetchUsecaseOutput($wordbook);
     }
