@@ -72,4 +72,4 @@ services:
   mail:
     image: mailhog/mailhog
     ports:
-      - 8026:8025
+      - 8027:8025

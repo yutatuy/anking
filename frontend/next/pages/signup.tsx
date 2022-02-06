@@ -99,14 +99,16 @@ const App: NextPage = () => {
           <div className="mt-5 text-sm">
             ※半角大小英数字をそれぞれ1種類以上含む8文字以上100文字以下
           </div>
-          <LoadingButton
-            className="text-black mt-8 mr-auto ml-auto pl-6 pr-6 h-10 bg-primary1"
-            loading={isSending}
-            variant="contained"
-            onClick={handleSubmit(onSubmit)}
-          >
-            登録する
-          </LoadingButton>
+          <div className="flex justify-center">
+            <LoadingButton
+              className="text-black mt-8 mr-auto ml-auto pl-6 pr-6 h-10 bg-primary1"
+              loading={isSending}
+              variant="contained"
+              onClick={handleSubmit(onSubmit)}
+            >
+              登録する
+            </LoadingButton>
+          </div>
         </form>
       </div>
     </BaseLayout>

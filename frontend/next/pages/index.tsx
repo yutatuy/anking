@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <BaseLayout>
       <div className="pt-24">
-        <h1 className="text-center font-bold text-2xl">ようこそ</h1>
+        <h1 className="text-center font-bold text-2xl">AnKingへようこそ</h1>
         <div className="mt-10 flex justify-center">
           <Link href="/signup">
             <Button variant="contained">新規登録</Button>

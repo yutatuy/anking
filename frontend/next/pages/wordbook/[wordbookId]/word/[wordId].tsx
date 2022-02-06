@@ -33,7 +33,6 @@ const App: NextPage = () => {
       setIsLoading(true)
       try {
         const { data } = await fetchWordApi({ id: Number(wordId) })
-        console.log("data", data)
         setWord(data.data.word)
       } catch (e) {
         console.log("[Error] fetchWordApi", e)

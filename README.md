@@ -1,57 +1,31 @@
-# docker-laravel 🐳
+# Name
 
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/35098175/145682384-0f531ede-96e0-44c3-a35e-32494bd9af42.png" alt="docker-laravel">
-</p>
-<p align="center">
-    <img src="https://github.com/ucan-lab/docker-laravel/actions/workflows/laravel-create-project.yml/badge.svg" alt="Test laravel-create-project.yml">
-    <img src="https://github.com/ucan-lab/docker-laravel/actions/workflows/laravel-git-clone.yml/badge.svg" alt="Test laravel-git-clone.yml">
-    <img src="https://img.shields.io/github/license/ucan-lab/docker-laravel" alt="License">
-</p>
+暗記王 (Anking)
 
-## Introduction
+# DEMO
 
-Build a simple laravel development environment with docker-compose. Compatible with Windows(WSL2), macOS(M1) and Linux.
+![anking](https://user-images.githubusercontent.com/46744500/152680426-191010e3-a614-4948-8147-96acc5b809a2.gif)
 
-## Usage
+# Features
 
-1. Click [Use this template](https://github.com/ucan-lab/docker-laravel/generate)
-2. Git clone & change directory
-3. Execute the following command
+- ID, パスワードで会員登録ができる
+- ID, パスワードでログインできる
+- 単語帳を管理できる
+  - 追加できる
+  - 編集できる
+  - 削除できる
+  - プレイできる
+  - 単語を追加できる
 
-```bash
-$ make create-project # Install the latest Laravel project
-$ make install-recommend-packages # Optional
+# Requirement
+
+- docker
+- node v17.0.2
+
+# Usage
+
 ```
-
-http://localhost
-
-## Tips
-
-- Read this [Makefile](https://github.com/ucan-lab/docker-laravel/blob/main/Makefile).
-- Read this [Wiki](https://github.com/ucan-lab/docker-laravel/wiki).
-
-## Container structures
-
-```bash
-├── app
-├── web
-└── db
+docker-compose up -d
+cd frontend/next
+yarn dev
 ```
-
-### app container
-
-- Base image
-  - [php](https://hub.docker.com/_/php):8.1-fpm-bullseye
-  - [composer](https://hub.docker.com/_/composer):2.1
-
-### web container
-
-- Base image
-  - [nginx](https://hub.docker.com/_/nginx):1.20-alpine
-  - [node](https://hub.docker.com/_/node):16-alpine
-
-### db container
-
-- Base image
-  - [mysql/mysql-server](https://hub.docker.com/r/mysql/mysql-server):8.0
